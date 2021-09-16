@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.kh.toy.common.db.JDBCTemplate;
-import com.kh.toy.common.exception.DataAccessException;
 import com.kh.toy.common.http.HttpConnector;
 import com.kh.toy.common.http.RequestParams;
 import com.kh.toy.common.mail.MailSender;
@@ -104,7 +103,7 @@ public class MemberService {
 			template.commit(conn);
 		} catch (Exception e) {
 			template.rollback(conn);
-			throw new DataAccessException(e);
+//			throw new DataAccessException(e);
 		} finally {
 			template.close(conn);
 		}
@@ -118,7 +117,7 @@ public class MemberService {
 			res = memberDao.deleteMember(userId, conn);
 		} catch (Exception e) {
 			template.rollback(conn);
-			throw new DataAccessException(e);
+//			throw new DataAccessException(e);
 		} finally {
 			template.close(conn);
 		}
